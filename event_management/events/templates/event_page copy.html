@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book an Event</h1>
+    <a href = "http://127.0.0.1:8000/events/Register">Register here</a>
+    <h1>Organize an Event</h1>
+    <!-- Step 1: Event Details -->
+    <h2>Step 1: Event Details</h2>
+    <form id="eventDetailsForm", method="post", enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="form_identifier" value="form1">
+        Event Name: <input type="text" name="event_name" required><br>
+        Event Duration: <input type="time" name="event_duration" required><br>
+        Event Date: <input type="date" name="event_date" required><br>
+        Description: <textarea name="description" rows="4" required></textarea><br>
+        <h2>Step 2: Organiser Details</h2>
+        Organizer Name: <input type="text" name="organizer_name" required><br>
+        Email: <input type="email" name="email" required><br>
+        Phone: <input type="tel" name="phone" required><br>
+        <h2>Step 3: Venue Details</h2>
+        Capacity: <input type="number" name="capacity" required><br>
+        Venue Name: <input type="text" name="venue_name" required><br>
+        Location: <input type="text" name="location" required><br>
+        <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function nextStep(currentFormId, nextFormId) {
+            var currentForm = document.getElementById(currentFormId);
+            var nextForm = document.getElementById(nextFormId);
+
+            if (currentForm.checkValidity()) {
+                currentForm.style.display = "none";
+                nextForm.style.display = "block";
+            } else {
+                alert("Please fill in all the required fields.");
+            }
+        }
+    </script>
+</body>
+</html>

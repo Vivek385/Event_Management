@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration</title>
+    <!-- Include Bootstrap CSS (add the correct path to your Bootstrap CSS file) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Event Registration</h2>
+        <form id="form1" method="post" class="mt-4">
+            {% csrf_token %}
+            <input type="hidden" name="form_identifier" value="form1">
+            <div class="form-group">
+                <label for="event">Select an Event:</label>
+                <select class="form-control" name="event" id="event">
+                    {% for event in events %}
+                        <option value="{{ event.id }}">{{ event.Event_Name }} - {{ event.Event_Date }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="attendee_name">Your Name:</label>
+                <input type="text" class="form-control" name="attendee_name" id="attendee_name">
+            </div>
+            <div class="form-group">
+                <label for="attendee_email">Email:</label>
+                <input type="email" class="form-control" name="attendee_email" id="attendee_email">
+            </div>
+            <div class="form-group">
+                <label for="attendee_phone">Phone Number:</label>
+                <input type="text" class="form-control" name="attendee_phone" id="attendee_phone">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    <!-- Include Bootstrap JS (add the correct path to your Bootstrap JS file) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

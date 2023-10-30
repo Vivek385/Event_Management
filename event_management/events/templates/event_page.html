@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        form {
+            padding: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book an Event</h1>
+        <a href="http://127.0.0.1:8000/events/Register">Register here</a>
+    </div>
+
+    <div class="container">
+        <h1>Organize an Event</h1>
+
+        <!-- Step 1: Event Details -->
+        <h2>Step 1: Event Details</h2>
+        <form id="eventDetailsForm" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="form_identifier" value="form1">
+            <label for="event_name">Event Name:</label>
+            <input type="text" id="event_name" name="event_name" required>
+
+            <label for="event_duration">Event Duration:</label>
+            <input type="time" id="event_duration" name="event_duration" required>
+
+            <label for="event_date">Event Date:</label>
+            <input type="date" id="event_date" name="event_date" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <h2>Step 2: Organizer Details</h2>
+            <label for="organizer_name">Organizer Name:</label>
+            <input type="text" id="organizer_name" name="organizer_name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <h2>Step 3: Venue Details</h2>
+            <label for="capacity">Capacity:</label>
+            <input type="number" id="capacity" name="capacity" required>
+
+            <label for="venue_name">Venue Name:</label>
+            <input type="text" id="venue_name" name="venue_name" required>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
